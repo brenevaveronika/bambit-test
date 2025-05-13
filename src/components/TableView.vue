@@ -1,4 +1,6 @@
 <template>
+
+  <!-- TODO: имплементить темную тему -->
   <div class="flex justify-center p-4 font-mono">
     <div class="w-full max-w-[600px] max-h-[600px] overflow-hidden bg-white">
       <div class="overflow-y-auto h-full">
@@ -17,17 +19,39 @@
           </thead>
           <tbody>
           <tr
-              v-for="(item, index) in visibleItems"
+              v-for="item in visibleItems"
               :key="item.id"
               class="border-t hover:bg-gray-50"
           >
             <td
-                v-for="(value, key) in item"
-                :key="key"
                 class="p-3 max-w-[150px] truncate"
-                :title="value"
+                :title="item.id"
             >
-              {{ value }}
+              {{ item.id }}
+            </td>
+            <td
+                class="p-3 max-w-[150px] truncate"
+                :title="item.albumId"
+            >
+              {{ item.albumId }}
+            </td>
+            <td
+                class="p-3 max-w-[150px] truncate"
+                :title="item.title"
+            >
+              {{ item.title }}
+            </td>
+            <td
+                class="p-3 max-w-[150px] truncate"
+                :title="item.url"
+            >
+              {{ item.url }}
+            </td>
+            <td
+                class="p-3 max-w-[150px] truncate"
+                :title="item.thumbnailUrl"
+            >
+              {{ item.thumbnailUrl }}
             </td>
           </tr>
           </tbody>
