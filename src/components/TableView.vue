@@ -1,17 +1,17 @@
 <template>
 
   <!-- TODO: имплементить темную тему -->
-  <div class="flex justify-center p-4 font-mono">
-    <div class="w-full max-w-[600px] max-h-[600px] overflow-hidden bg-white">
+  <div class="flex justify-center p-4 font-mono dark:text-white">
+    <div class="w-full max-w-[600px] max-h-[600px] overflow-hidden bg-white dark:bg-black">
       <div class="overflow-y-auto h-full">
         <table class="w-full border-collapse">
-          <thead class="sticky top-0 bg-gray-100 z-10">
+          <thead class="sticky top-0 dark:bg-gray-700 bg-gray-100 z-10">
           <tr>
             <th
                 v-for="(header, key) in headers"
                 :key="key"
                 @click="sortTable(key)"
-                class="p-3 text-left cursor-pointer hover:bg-gray-200"
+                class="p-3 text-left cursor-pointer dark:hover:bg-gray-900 hover:bg-gray-200"
             >
               {{ header }}
             </th>
@@ -21,7 +21,7 @@
           <tr
               v-for="item in visibleItems"
               :key="item.id"
-              class="border-t hover:bg-gray-50"
+              class="border-t dark:hover:bg-gray-900 hover:bg-gray-50"
           >
             <td
                 class="p-3 max-w-[150px] truncate"

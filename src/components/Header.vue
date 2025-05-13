@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full">
+  <header class="w-full bg-white dark:bg-black dark:text-white">
     <div class="container px-[50px] py-[20px] mx-auto flex flex-col md:flex-row gap-4 items-center font-mono">
       <div class="flex flex-1 flex-col md:flex-row gap-2 w-full">
         <!-- TODO: анимация скролла у placeholder на маленьких экранах -->
