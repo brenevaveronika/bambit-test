@@ -1,6 +1,6 @@
 <template>
-  <header class="w-screen">
-    <div class="container p-[50px] mx-auto flex flex-col md:flex-row gap-4 items-center font-mono">
+  <header class="w-full">
+    <div class="container px-[50px] py-[20px] mx-auto flex flex-col md:flex-row gap-4 items-center font-mono">
       <div class="flex flex-1 flex-col md:flex-row gap-2 w-full">
         <!-- TODO: анимация скролла у placeholder на маленьких экранах -->
         <input
