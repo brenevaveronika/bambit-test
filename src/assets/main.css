@@ -4,3 +4,28 @@
 
 /* вот это я долго искала ...*/
 @custom-variant dark (&:where(.dark, .dark *));
+
+html {
+    overflow-y: hidden;
+    height: fit-content;
+    padding-bottom: 50px;
+}
+::-webkit-scrollbar {
+    width: 8px;
+    background: #f3f2f2;
+}
+::-webkit-scrollbar-thumb {
+    background: #d3cdcd;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #c3bcbc;
+}
+.dark ::-webkit-scrollbar {
+    background: #1a1a1a;
+}
+.dark ::-webkit-scrollbar-thumb {
+    background: #444;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

@@ -1,11 +1,26 @@
 import {defineStore} from "pinia";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 
 export const usePhotoStore = defineStore('photos', () => {
     const photos = ref([]);
     const loading = ref(false);
     const error = ref(null);
+    const savedAlbums = ref([]);
 
+    onMounted(() => {
+        loadInitialData();
+    });
+
+    const loadInitialData = async () => {
+        const saved = localStorage.getItem('selectedAlbums');
+        savedAlbums.value = saved ? JSON.parse(saved) : [];
+
+        if (savedAlbums.value.length > 0) {
+            await fetchPhotos(savedAlbums.value);
+        } else {
+            await fetchPhotos();
+        }
+    };
 
     const fetchPhotos = async (albumIds = []) => {
         loading.value = true;
@@ -23,5 +38,9 @@ export const usePhotoStore = defineStore('photos', () => {
             loading.value = false;
         }
     }
-    return { photos, loading, error, fetchPhotos }
+    const saveAlbums = (albumIds) => {
+        savedAlbums.value = albumIds;
+        localStorage.setItem('selectedAlbums', JSON.stringify(albumIds));
+    };
+    return { photos, loading, error, fetchPhotos, loadInitialData, saveAlbums }
 })

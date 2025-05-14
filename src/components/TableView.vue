@@ -1,10 +1,9 @@
 <template>
-
-  <!-- TODO: имплементить темную тему -->
+  <!-- TODO: изменить стили скролла в темной теме -->
   <div class="flex justify-center p-4 font-mono dark:text-white">
     <div class="w-full max-w-[600px] max-h-[600px] overflow-hidden bg-white dark:bg-black">
       <div class="overflow-y-auto h-full">
-        <table class="w-full border-collapse">
+        <table class="w-full border-collapse table-fixed">
           <thead class="sticky top-0 dark:bg-gray-700 bg-gray-100 z-10">
           <tr>
             <th
@@ -24,31 +23,31 @@
               class="border-t dark:hover:bg-gray-900 hover:bg-gray-50"
           >
             <td
-                class="p-3 max-w-[150px] truncate"
+                class="p-3 truncate"
                 :title="item.id"
             >
               {{ item.id }}
             </td>
             <td
-                class="p-3 max-w-[150px] truncate"
+                class="p-3 truncate"
                 :title="item.albumId"
             >
               {{ item.albumId }}
             </td>
             <td
-                class="p-3 max-w-[150px] truncate"
+                class="p-3 truncate"
                 :title="item.title"
             >
               {{ item.title }}
             </td>
             <td
-                class="p-3 max-w-[150px] truncate"
+                class="p-3 truncate"
                 :title="item.url"
             >
               {{ item.url }}
             </td>
             <td
-                class="p-3 max-w-[150px] truncate"
+                class="p-3 truncate"
                 :title="item.thumbnailUrl"
             >
               {{ item.thumbnailUrl }}
@@ -56,7 +55,7 @@
           </tr>
           </tbody>
         </table>
-        <div v-if="loading" class="p-4 text-center text-gray-500">
+        <div v-if="loading" class="p-4 text-center text-gray-500 dark:text-white">
           Загрузка...
         </div>
       </div>

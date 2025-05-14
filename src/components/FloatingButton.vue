@@ -2,14 +2,14 @@
   <button class="fixed bottom-6 right-6 z-50 p-3 rounded-full shadow-lg
            bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500
            transition-all duration-300 transform hover:scale-110
-           focus:outline-none focus:ring-1 focus:ring-black-500"
+           focus:outline-none focus:ring-1 focus:ring-black-500 dark:focus:ring-white"
           @click="toggleTheme"
           aria-label="Переключить тему">
 
-    <!-- смена исконок луны и солнца -->
+    <!-- смена иконок луны и солнца -->
     <transition name="fade" mode="out-in">
-      <MoonIcon v-if="!isDark" class="w-6 h-6 text-gray-700" />
-      <SunIcon v-else class="w-6 h-6 text-yellow-300" />
+      <MoonIcon v-if="!isDark" class="w-6 h-6" />
+      <SunIcon v-else class="w-6 h-6"  stroke="white"/>
     </transition>
   </button>
 </template>
@@ -47,4 +47,13 @@ const disableDarkMode = () => {
 </script>
 
 <style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.15s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
