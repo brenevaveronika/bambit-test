@@ -1,6 +1,9 @@
 <template>
   <header class="w-full bg-white dark:bg-black dark:text-white">
     <div class="container px-[50px] py-[20px] mx-auto flex flex-col md:flex-row gap-4 items-center font-mono">
+      <h1 class="text-2xl font-bold whitespace-nowrap mr-4">
+        Photo<span class="text-blue-600">Finder</span>
+      </h1>
       <div class="flex flex-1 flex-col md:flex-row gap-2 w-full relative">
         <input
             v-model="albumIdsInput"
