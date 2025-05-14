@@ -9,8 +9,8 @@
             <th
                 v-for="(header, key) in headers"
                 :key="key"
-                @click="sortTable(key)"
                 class="p-3 text-left cursor-pointer dark:hover:bg-gray-900 hover:bg-gray-200"
+                @click="sortTable(key)"
             >
               {{ header }}
             </th>
@@ -20,39 +20,42 @@
           <tr
               v-for="item in visibleItems"
               :key="item.id"
-              class="border-t dark:hover:bg-gray-900 hover:bg-gray-50"
+              class="border-t dark:hover:bg-gray-900 hover:bg-gray-50
+                     transform transition-transform duration-100 active:scale-95"
+              @click="openModal(item)"
           >
             <td
-                class="p-3 truncate"
                 :title="item.id"
+                class="p-3 truncate"
             >
               {{ item.id }}
             </td>
             <td
-                class="p-3 truncate"
                 :title="item.albumId"
+                class="p-3 truncate"
             >
               {{ item.albumId }}
             </td>
             <td
-                class="p-3 truncate"
                 :title="item.title"
+                class="p-3 truncate"
             >
               {{ item.title }}
             </td>
             <td
-                class="p-3 truncate"
                 :title="item.url"
+                class="p-3 truncate"
             >
               {{ item.url }}
             </td>
             <td
-                class="p-3 truncate"
                 :title="item.thumbnailUrl"
+                class="p-3 truncate"
             >
               {{ item.thumbnailUrl }}
             </td>
           </tr>
+          <ModalView ref="modal"/>
           </tbody>
         </table>
         <div v-if="loading" class="p-4 text-center text-gray-500 dark:text-white">
@@ -64,7 +67,8 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import {ref, computed, onMounted, onUnmounted} from 'vue'
+import ModalView from "@/components/ModalView.vue";
 
 const props = defineProps({
   items: Array
@@ -108,7 +112,7 @@ const sortTable = (key) => {
 }
 
 const handleScroll = (e) => {
-  const { scrollTop, scrollHeight, clientHeight } = e.target
+  const {scrollTop, scrollHeight, clientHeight} = e.target
   const isBottom = scrollHeight - scrollTop <= clientHeight + 50
 
   if (isBottom && visibleCount.value < sortedItems.value.length && !loading.value) {
@@ -118,6 +122,12 @@ const handleScroll = (e) => {
       loading.value = false
     }, 300)
   }
+}
+
+const modal = ref(null)
+
+const openModal = (photo) => {
+  modal.value?.open(photo)
 }
 
 onMounted(() => {
