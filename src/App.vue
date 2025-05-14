@@ -3,6 +3,7 @@ import {usePhotoStore} from "@/stores/photoStore.js";
 import Header from "@/components/Header.vue";
 import TableView from "@/components/TableView.vue";
 import FloatingButton from "@/components/FloatingButton.vue";
+import SplachScreen from "@/components/SplachScreen.vue";
 
 const photoStore = usePhotoStore();
 
@@ -13,6 +14,7 @@ const handleSearch = (albumIds) => {
 </script>
 <template>
   <body class="dark:bg-black dark:bg-scroll-gray-700 min-h-dvh">
+  <SplachScreen />
   <FloatingButton/>
   <Header @search="handleSearch"/>
   <TableView v-if="!photoStore.loading && photoStore.photos.length" :items="photoStore.photos"/>
